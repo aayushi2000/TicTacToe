@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Tic_Tac_toe</string>
+    <string name="heading">Welcome to TIC TAC TOE!</string>
+</resources>
