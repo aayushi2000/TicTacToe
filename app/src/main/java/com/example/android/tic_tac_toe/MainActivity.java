@@ -43,16 +43,19 @@ public class MainActivity extends AppCompatActivity {
 
                 if (ActivePlayer == 0) {
                     img.setImageResource(R.drawable.x);
-                    ActivePlayer = 1;
+
                     if(!playerwin) {
+
+                        ActivePlayer = 1;
                         TextView status = findViewById(R.id.status);
                         status.setText("0's turn : Tap to play!");
                     }
 
                 } else {
                     img.setImageResource(R.drawable.o);
-                    ActivePlayer = 0;
+
                     if (!playerwin) {
+                        ActivePlayer = 0;
                         TextView status = findViewById(R.id.status);
                         status.setText("x's turn : Tap to play!");
                     }
@@ -67,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
                         counter++;
                     }
 
-                    if (counter == 5) {
+                    if (counter == 5 && !playerwin) {
                         gameReset(view);
                         TextView status = (TextView) findViewById(R.id.status);
                         status.setText("It was a Tie! Tap to start a new game!");
@@ -79,17 +82,18 @@ public class MainActivity extends AppCompatActivity {
                         counter++;
                     }
 
-                    if (counter == 5) {
+                    if (counter == 5 && !playerwin) {
                         gameReset(view);
                         TextView status = (TextView) findViewById(R.id.status);
                         status.setText("It was a Tie! Tap to start a new game!");
                     }}
                 }
             }
-                if (counter!=5) {
+
                     for (int[] win : winpos) {
                         if (gameState[win[0]] == gameState[win[1]] && gameState[win[1]] == gameState[win[2]] && gameState[win[0]] != 2) {
                             gameActive = false;
+                            playerwin= true;
 
                             if (gameState[win[0]] == 0) {
                                 TextView status = findViewById(R.id.status);
@@ -103,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
                 }
-        }
+
             public void gameReset(View view) {
                 ActivePlayer = 2;
                 playerwin = false;
